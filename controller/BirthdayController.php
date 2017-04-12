@@ -1,11 +1,11 @@
 <?php
 
-require(ROOT . "model/birthdayModel.php");
+require(ROOT . "model/BirthdayModel.php");
 
 function index()
 {
 	render("birthday/index", array(
-		'birthdays' => getAllbirthdays()
+		'birthdays' => getAllBirthdays()
 	));
 }
 
@@ -16,7 +16,7 @@ function create()
 
 function createSave()
 {
-	if (!createbirthday()) {
+	if (!createBirthday()) {
 		header("Location:" . URL . "error/index");
 		exit();
 	}
@@ -27,13 +27,13 @@ function createSave()
 function edit($id)
 {
 	render("birthday/edit", array(
-		'birthday' => getbirthday($id)
+		'birthday' => getBirthday($id)
 	));
 }
 
 function editSave()
 {
-	if (!editbirthday()) {
+	if (!editBirthday()) {
 		header("Location:" . URL . "error/index");
 		exit();
 	}
@@ -43,7 +43,7 @@ function editSave()
 
 function delete($id)
 {
-	if (!deletebirthday($id)) {
+	if (!deleteBirthday($id)) {
 		header("Location:" . URL . "error/index");
 		exit();
 	}

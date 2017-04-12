@@ -1,10 +1,10 @@
 <?php
 
-function getbirthday($id) 
+function getBirthday($id) 
 {
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT * FROM birthdays WHERE birthday_id = :id";
+	$sql = "SELECT * FROM birthdays WHERE id = :id";
 	$query = $db->prepare($sql);
 	$query->execute(array(
 		":id" => $id));
@@ -14,7 +14,7 @@ function getbirthday($id)
 	return $query->fetch();
 }
 
-function getAllbirthdays() 
+function getAllBirthdays() 
 {
 	$db = openDatabaseConnection();
 
@@ -27,25 +27,25 @@ function getAllbirthdays()
 	return $query->fetchAll();
 }
 
-function editbirthday() 
+function editBirthday() 
 {
-	$firstname = isset($_POST['firstname']) ? $_POST['firstname'] : null;
-	$lastname = isset($_POST['lastname']) ? $_POST['lastname'] : null;
-	$gender = isset($_POST['gender']) ? $_POST['gender'] : null;
+	$person = isset($_POST['person']) ? $_POST['person'] : null;
+	$day = isset($_POST['day']) ? $_POST['day'] : null;
+	$month = isset($_POST['month']) ? $_POST['month'] : null;
 	$id = isset($_POST['id']) ? $_POST['id'] : null;
 	
-	if (strlen($firstname) == 0 || strlen($lastname) == 0 || strlen($gender) == 0) {
+	if (strlen($person) == 0 || strlen($day) == 0 || strlen($month) == 0) {
 		return false;
 	}
 	
 	$db = openDatabaseConnection();
 
-	$sql = "UPDATE birthdays SET birthday_firstname = :firstname, birthday_lastname = :lastname, birthday_gender = :gender WHERE birthday_id = :id";
+	$sql = "UPDATE birthdays SET person = :person, day = :day, month = :month WHERE id = :id";
 	$query = $db->prepare($sql);
 	$query->execute(array(
-		':firstname' => $firstname,
-		':lastname' => $lastname,
-		':gender' => $gender,
+		':person' => $person,
+		':day' => $day,
+		':month' => $month,
 		':id' => $id));
 
 	$db = null;
@@ -53,7 +53,7 @@ function editbirthday()
 	return true;
 }
 
-function deletebirthday($id = null) 
+function deleteBirthday($id = null) 
 {
 	if (!$id) {
 		return false;
@@ -61,7 +61,7 @@ function deletebirthday($id = null)
 	
 	$db = openDatabaseConnection();
 
-	$sql = "DELETE FROM birthdays WHERE birthday_id=:id ";
+	$sql = "DELETE FROM birthdays WHERE id=:id ";
 	$query = $db->prepare($sql);
 	$query->execute(array(
 		':id' => $id));
@@ -71,24 +71,24 @@ function deletebirthday($id = null)
 	return true;
 }
 
-function createbirthday() 
+function createBirthday() 
 {
-	$firstname = isset($_POST['firstname']) ? $_POST['firstname'] : null;
-	$lastname = isset($_POST['lastname']) ? $_POST['lastname'] : null;
-	$gender = isset($_POST['gender']) ? $_POST['gender'] : null;
+	$person = isset($_POST['person']) ? $_POST['person'] : null;
+	$day = isset($_POST['day']) ? $_POST['day'] : null;
+	$month = isset($_POST['month']) ? $_POST['month'] : null;
 	
-	if (strlen($firstname) == 0 || strlen($lastname) == 0 || strlen($gender) == 0) {
+	if (strlen($person) == 0 || strlen($day) == 0 || strlen($month) == 0) {
 		return false;
 	}
 	
 	$db = openDatabaseConnection();
 
-	$sql = "INSERT INTO birthdays(birthday_firstname, birthday_lastname, birthday_gender) VALUES (:firstname, :lastname, :gender)";
+	$sql = "INSERT INTO birthdays(person, day, month) VALUES (:person, :day, :month)";
 	$query = $db->prepare($sql);
 	$query->execute(array(
-		':firstname' => $firstname,
-		':lastname' => $lastname,
-		':gender' => $gender));
+		':person' => $person,
+		':day' => $day,
+		':month' => $month));
 
 	$db = null;
 	
