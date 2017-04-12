@@ -18,7 +18,7 @@ function getAllBirthdays()
 {
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT * FROM birthdays";
+	$sql = "SELECT * FROM birthdays order by month, day";
 	$query = $db->prepare($sql);
 	$query->execute();
 
