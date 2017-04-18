@@ -1,16 +1,16 @@
 <div class="container">
 	<h1>Edit</h1>
-	<form action="<?= URL ?>student/editSave" method="post">
+	<form action="<?= URL ?>birthday/editSave" method="post">
 	
-		<input type="text" name="firstname" value="<?= $student['student_firstname']; ?>">
-		<input type="text" name="lastname" value="<?= $student['student_lastname']; ?>">
+		<input type="text" name="person" value="<?= $birthday['person']; ?>">
+		<input type="text" name="day" value="<?= $birthday['day']; ?>">		
+		<input type="text" name="month" value="<?= $birthday['month']; ?>">
+		<input type="text" name="year" value="<?= $birthday['year']; ?>">
+
 		
-		<select name="gender">
-			<option value="male" <?php if ($student['student_gender'] == "male") { echo "selected=\"true\""; } ?>>Male</option>
-			<option value="female" <?php if ($student['student_gender'] == "female") { echo "selected=\"true\""; } ?>>Female</option>	
 		</select>
 
-		<input type="hidden" name="id" value="<?= $student['student_id']; ?>">
+		<input type="hidden" name="id" value="<?= $birthday['id']; ?>">
 		<input type="submit" value="Verzenden">
 	
 	</form>

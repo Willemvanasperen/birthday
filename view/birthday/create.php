@@ -1,12 +1,10 @@
 <div class="container">
-	<form action="<?= URL ?>student/createSave" method="post">
+	<form action="<?= URL ?>birthday/createSave" method="post">
 	
-		<input type="text" name="firstname" placeholder="john">
-		<input type="text" name="lastname" placeholder="doe">
-		<select name="gender">
-			<option value="male">Male</option>
-			<option value="female">Female</option>	
-		</select>
+		<input type="text" name="person" placeholder="Willem">
+		<input type="text" name="day" placeholder="7">
+		<input type="text" name="month" placeholder="8">
+		<input type="text" name="year" placeholder="2000">
 
 		<input type="submit" value="Verzenden">
 	

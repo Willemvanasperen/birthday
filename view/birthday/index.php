@@ -1,27 +1,26 @@
-<?php 
-print_r($birthdays);
-$birthday = array ("", "januari", "februari", "maart", "april", "mei", "juni", "juli", 
-    "augustus", "september", "oktober", "november", "december");
+<?php
+        $month = array("", "Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December");
+    ?>
 
-foreach ($birthdays as $birthday);
- echo "<h1>" . $birthday['month'] . "</h1>";
-?>
+    <?php 
+    $currentMonth = null;
+    $currentDay = null;
 
+    foreach($birthdays as $birthday) { ?> 
+    <?php if ($currentMonth != $birthday['month']) {
+        echo "<h1>" . $month[$birthday['month']] . "</h1>";
+        $currentMonth = $birthday['month'];
+    }
 
-
-<h1>februari</h1>
-        <h2>22</h2>
+    if ($currentDay != $birthday['day']) {
+         echo "<h2>" . $birthday['day'] . "</h2>";
+        $currentDay = $birthday['day'];
+    } ?>
         <p>
-            <a href="edit.php?id=4">
-                Anoushka (1981)</a>
-                
-            <a href="delete.php?id=4">x</a>
+            <a href="<?php echo URL . 'birthday/edit/' . $birthday['id']; ?>">
+                <?php echo $birthday['person'] . " (" . $birthday['year'] . ")";  ?></a>
+
+            <a href="<?php echo URL . 'birthday/delete/' . $birthday['id']; ?>">x</a>
         </p>
-        <p>
-            <a href="edit.php?id=10">
-                Mila (1993)</a>
-                
-            <a href="delete.php?id=10">x</a>
-        </p>
-           
-<p><a href="create.php">+ Toevoegen</a></p>
+    <?php } ?>
+<p><a href="<?= URL ?>birthday/create">+ Toevoegen</a></p>
