@@ -1,8 +1,5 @@
-<?php
-        $month = array("", "Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December");
-    ?>
-
-    <?php 
+<?php 
+     $month = array("", "Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December");
     $currentMonth = null;
     $currentDay = null;
 
@@ -10,6 +7,7 @@
     <?php if ($currentMonth != $birthday['month']) {
         echo "<h1>" . $month[$birthday['month']] . "</h1>";
         $currentMonth = $birthday['month'];
+        $currentDay = null;
     }
 
     if ($currentDay != $birthday['day']) {

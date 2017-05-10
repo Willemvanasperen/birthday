@@ -26,6 +26,8 @@ function createSave()
 
 function edit($id)
 {
+	 $month = array("", "Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December");
+	 
 	render("birthday/edit", array(
 		'birthday' => getBirthday($id)
 	));
